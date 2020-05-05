@@ -2,3 +2,4 @@
 bench.Main
 --macro nullSafety("bench", Strict)
 -js out/js/main.js
+-cmd cp out/js/main.js ../Unity/Assets/Resources/bench.js.txt

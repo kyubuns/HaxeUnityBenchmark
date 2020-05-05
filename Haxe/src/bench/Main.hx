@@ -1,5 +1,6 @@
 package bench;
 
+@:expose
 class Main {
 	static function test1():String {
 		var a = 1;

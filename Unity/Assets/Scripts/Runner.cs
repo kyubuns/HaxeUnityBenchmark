@@ -13,9 +13,12 @@ namespace HaxeUnityBenchmark
         public void Run()
         {
             resultText.text = "";
+            var jsSource = Resources.Load<TextAsset>("bench.js").text;
+
             Log($"Start {DateTime.Now}");
 
-            Execute("cs", new CsharpExecutor());
+            Execute("Csharp", new CsharpExecutor());
+            Execute("JavaScriptJint", new JavaScriptJintExecutor(jsSource));
 
             Log($"Finish {DateTime.Now}");
         }
@@ -27,9 +30,10 @@ namespace HaxeUnityBenchmark
 
         private void Execute(string id, IExecutor executor)
         {
+            const int num = 100;
             {
                 var stopwatch = Stopwatch.StartNew();
-                for (var i = 0; i < 10000; ++i)
+                for (var i = 0; i < num; ++i)
                 {
                     var r = executor.Test1();
                     if (i == 0) Debug.Log(r);
@@ -40,7 +44,7 @@ namespace HaxeUnityBenchmark
 
             {
                 var stopwatch = Stopwatch.StartNew();
-                for (var i = 0; i < 10000; ++i)
+                for (var i = 0; i < num; ++i)
                 {
                     var r = executor.Test2(10000);
                     if (i == 0) Debug.Log(r);
