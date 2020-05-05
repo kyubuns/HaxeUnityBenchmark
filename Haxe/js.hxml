@@ -1,0 +1,4 @@
+-cp src
+bench.Main
+--macro nullSafety("bench", Strict)
+-js out/js/main.js

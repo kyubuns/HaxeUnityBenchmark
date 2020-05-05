@@ -1,0 +1,6 @@
+-cp src
+bench.Main
+--macro nullSafety("bench", Strict)
+-js out/cs/bench
+-D no_root
+-D net-ver=40

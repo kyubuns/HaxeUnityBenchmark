@@ -1,0 +1,4 @@
+-cp src
+bench.Main
+--macro nullSafety("bench", Strict)
+-lua out/lua/main.lua
