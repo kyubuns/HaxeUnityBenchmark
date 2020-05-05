@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 namespace HaxeUnityBenchmark
 {
@@ -30,7 +31,8 @@ namespace HaxeUnityBenchmark
                 var stopwatch = Stopwatch.StartNew();
                 for (var i = 0; i < 10000; ++i)
                 {
-                    executor.Test1();
+                    var r = executor.Test1();
+                    if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
                 Log($"{id} test1 {stopwatch.Elapsed.TotalSeconds:0.00}s");
@@ -40,7 +42,8 @@ namespace HaxeUnityBenchmark
                 var stopwatch = Stopwatch.StartNew();
                 for (var i = 0; i < 10000; ++i)
                 {
-                    executor.Test2(10000);
+                    var r = executor.Test2(10000);
+                    if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
                 Log($"{id} test2 {stopwatch.Elapsed.TotalSeconds:0.00}s");
