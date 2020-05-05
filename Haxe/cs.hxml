@@ -1,6 +1,7 @@
 -cp src
 bench.Main
 --macro nullSafety("bench", Strict)
--js out/cs/bench
+-cs out/cs/bench
 -D no_root
 -D net-ver=40
+-cmd cp out/cs/bench/bin/bench.dll ../Unity/Assets/Scripts/Csharp

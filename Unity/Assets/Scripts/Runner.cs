@@ -13,6 +13,10 @@ namespace HaxeUnityBenchmark
         {
             resultText.text = "";
             Log($"Start {DateTime.Now}");
+
+            Execute("cs", new CsharpExecutor());
+
+            Log($"Finish {DateTime.Now}");
         }
 
         private void Log(string message)
@@ -34,7 +38,7 @@ namespace HaxeUnityBenchmark
 
             {
                 var stopwatch = Stopwatch.StartNew();
-                for (var i = 0; i < 100; ++i)
+                for (var i = 0; i < 10000; ++i)
                 {
                     executor.Test2(10000);
                 }
