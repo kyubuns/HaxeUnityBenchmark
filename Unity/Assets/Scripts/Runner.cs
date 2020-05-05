@@ -19,9 +19,9 @@ namespace HaxeUnityBenchmark
             Log($"Start {DateTime.Now}");
             Log("");
 
-            Execute("Csharp", new CsharpExecutor());
-            Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource));
-            Execute("Lua/xLua", new LuaXLuaExecutor(luaSource));
+            Execute("Csharp", new CsharpExecutor(), 1000);
+            Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource), 100);
+            Execute("Lua/xLua", new LuaXLuaExecutor(luaSource), 1000);
 
             Log($"Finish {DateTime.Now}");
         }
@@ -31,30 +31,29 @@ namespace HaxeUnityBenchmark
             resultText.text = $"{resultText.text}\n{message}";
         }
 
-        private void Execute(string id, IExecutor executor)
+        private void Execute(string id, IExecutor executor, int count)
         {
-            const int num = 100;
             Log($"## {id}");
             {
                 var stopwatch = Stopwatch.StartNew();
-                for (var i = 0; i < num; ++i)
+                for (var i = 0; i < count; ++i)
                 {
                     var r = executor.Test1();
                     if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
-                Log($"test1 = {stopwatch.Elapsed.TotalSeconds:0.00}s");
+                Log($"test1 = {stopwatch.Elapsed.TotalSeconds:0.00}s / {count}回");
             }
 
             {
                 var stopwatch = Stopwatch.StartNew();
-                for (var i = 0; i < num; ++i)
+                for (var i = 0; i < count; ++i)
                 {
                     var r = executor.Test2(10000);
                     if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
-                Log($"test2 = {stopwatch.Elapsed.TotalSeconds:0.00}s");
+                Log($"test2 = {stopwatch.Elapsed.TotalSeconds:0.00}s / {count}回");
             }
             Log("");
         }
