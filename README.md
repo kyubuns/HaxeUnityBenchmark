@@ -13,13 +13,13 @@ Haxeで書いたコードをUnity上で動かすにあたり、どんな方法�
 
 - [sebastienros/jint](https://github.com/sebastienros/jint)
 - Run on iPhone11Pro: `18.64s / 5000回`
-- Compile: `haxe lua.hxml  0.35s user 0.12s system 97% cpu 0.475 total`
+- Compile: `haxe js.hxml  0.18s user 0.08s system 98% cpu 0.263 total`
 
 ## Lua - xLua
 
 - [Tencent/xLua](https://github.com/Tencent/xLua)
 - Run on iPhone11Pro: `1.15s / 5000回`
-- Compile: `haxe js.hxml  0.18s user 0.08s system 98% cpu 0.263 total`
+- Compile: `haxe lua.hxml  0.35s user 0.12s system 97% cpu 0.475 total`
 
 ## JavaScript - jurassic
 
