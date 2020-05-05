@@ -2,3 +2,5 @@
 bench.Main
 --macro nullSafety("bench", Strict)
 -lua out/lua/main.lua
+-D lua-vanilla
+-cmd cp out/lua/main.lua ../Unity/Assets/Resources/bench.lua.txt

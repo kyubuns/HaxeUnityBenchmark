@@ -14,11 +14,14 @@ namespace HaxeUnityBenchmark
         {
             resultText.text = "";
             var jsSource = Resources.Load<TextAsset>("bench.js").text;
+            var luaSource = Resources.Load<TextAsset>("bench.lua").text;
 
             Log($"Start {DateTime.Now}");
+            Log("");
 
             Execute("Csharp", new CsharpExecutor());
-            Execute("JavaScriptJint", new JavaScriptJintExecutor(jsSource));
+            Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource));
+            Execute("Lua/xLua", new LuaXLuaExecutor(luaSource));
 
             Log($"Finish {DateTime.Now}");
         }
@@ -31,6 +34,7 @@ namespace HaxeUnityBenchmark
         private void Execute(string id, IExecutor executor)
         {
             const int num = 100;
+            Log($"## {id}");
             {
                 var stopwatch = Stopwatch.StartNew();
                 for (var i = 0; i < num; ++i)
@@ -39,7 +43,7 @@ namespace HaxeUnityBenchmark
                     if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
-                Log($"{id} test1 {stopwatch.Elapsed.TotalSeconds:0.00}s");
+                Log($"test1 = {stopwatch.Elapsed.TotalSeconds:0.00}s");
             }
 
             {
@@ -50,8 +54,9 @@ namespace HaxeUnityBenchmark
                     if (i == 0) Debug.Log(r);
                 }
                 stopwatch.Stop();
-                Log($"{id} test2 {stopwatch.Elapsed.TotalSeconds:0.00}s");
+                Log($"test2 = {stopwatch.Elapsed.TotalSeconds:0.00}s");
             }
+            Log("");
         }
     }
 }
