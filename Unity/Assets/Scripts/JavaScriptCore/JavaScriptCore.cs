@@ -1,21 +1,31 @@
-﻿using System;
+﻿using System.Runtime.InteropServices;
 
 namespace JavaScriptCore
 {
-    public class Engine
+    public static class Engine
     {
-        public void EvaluateScript(string script)
+        [DllImport("__Internal")]
+        private static extern void _EvaluateScript(string script);
+
+        [DllImport("__Internal")]
+        private static extern string _CallFunction1(string methodName);
+
+        [DllImport("__Internal")]
+        private static extern string _CallFunction2(string methodName, int args0);
+
+        public static void EvaluateScript(string script)
         {
+            _EvaluateScript(script);
         }
 
-        public string CallFunction(string methodName)
+        public static string CallFunction(string methodName)
         {
-            throw new NotImplementedException();
+            return _CallFunction1(methodName);
         }
 
-        public string CallFunction(string methodName, int args0)
+        public static string CallFunction(string methodName, int args0)
         {
-            throw new NotImplementedException();
+            return _CallFunction2(methodName, args0);
         }
     }
 }
