@@ -23,6 +23,7 @@ namespace HaxeUnityBenchmark
             Execute("Csharp", new CsharpExecutor(), count);
             Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource), 10);
             Execute("Lua/xLua", new LuaXLuaExecutor(luaSource), count);
+            Execute("JavaScript/Core", new JavaScriptCoreExecutor(jsSource), count);
 
             Log($"Finish {DateTime.Now}");
         }
@@ -40,7 +41,7 @@ namespace HaxeUnityBenchmark
                 for (var i = 0; i < count; ++i)
                 {
                     var r = executor.Test1();
-                    if (i == 0) Debug.Log(r);
+                    if (i == 0) Debug.Log($"{id} test1 = {r}");
                 }
                 stopwatch.Stop();
                 Log($"test1 = {stopwatch.Elapsed.TotalSeconds:0.00}s / {count}回");
@@ -51,7 +52,7 @@ namespace HaxeUnityBenchmark
                 for (var i = 0; i < count; ++i)
                 {
                     var r = executor.Test2(10000);
-                    if (i == 0) Debug.Log(r);
+                    if (i == 0) Debug.Log($"{id} test2 = {r}");
                 }
                 stopwatch.Stop();
                 Log($"test2 = {stopwatch.Elapsed.TotalSeconds:0.00}s / {count}回");
