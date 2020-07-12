@@ -21,7 +21,7 @@ namespace HaxeUnityBenchmark
 
             const int count = 5000;
             Execute("Csharp", new CsharpExecutor(), count);
-            Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource), count);
+            Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource), 10);
             Execute("Lua/xLua", new LuaXLuaExecutor(luaSource), count);
 
             Log($"Finish {DateTime.Now}");
