@@ -24,6 +24,7 @@ namespace HaxeUnityBenchmark
             Execute("JavaScript/Jint", new JavaScriptJintExecutor(jsSource), 100);
             Execute("Lua/xLua", new LuaXLuaExecutor(luaSource), count);
             Execute("JavaScript/Core", new JavaScriptCoreExecutor(jsSource), count);
+            Execute("JavaScript/Bridge", new BridgeJsCoreExecutor(jsSource), count);
 
             Log($"Finish {DateTime.Now}");
         }
