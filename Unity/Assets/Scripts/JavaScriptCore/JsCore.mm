@@ -44,4 +44,11 @@ extern "C"
         NSString *resultText = [result toString];
         return JavaScriptCore_MakeStringCopy([resultText UTF8String]);
     }
+
+    char *_CallFunction3(const char* methodName)
+    {
+        JSValue *result = [context evaluateScript: JavaScriptCore_CreateNSString(methodName)];
+        NSString *resultText = [result toString];
+        return JavaScriptCore_MakeStringCopy([resultText UTF8String]);
+    }
 }

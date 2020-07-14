@@ -13,6 +13,9 @@ namespace JavaScriptCore
         [DllImport("__Internal")]
         private static extern string _CallFunction2(string methodName, int args0);
 
+        [DllImport("__Internal")]
+        private static extern string _CallFunction3(string methodName);
+
         public static void EvaluateScript(string script)
         {
             _EvaluateScript(script);
@@ -20,12 +23,12 @@ namespace JavaScriptCore
 
         public static string CallFunction(string methodName)
         {
-            return _CallFunction1(methodName);
+            return _CallFunction3($"bench.Main.{methodName}();");
         }
 
         public static string CallFunction(string methodName, int args0)
         {
-            return _CallFunction2(methodName, args0);
+            return _CallFunction3($"bench.Main.{methodName}({args0});");
         }
     }
 }

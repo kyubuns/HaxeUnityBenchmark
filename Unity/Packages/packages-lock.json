@@ -65,6 +65,13 @@
         "com.unity.modules.ui": "1.0.0"
       }
     },
+    "dev.kyubuns.bridgejscore": {
+      "version": "ssh://git@github.com/kyubuns/BridgeJsCoreUnity.git?path=Unity/Assets/BridgeJsCore",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d2a2f88628ef0c55af6517df555c2c3a0d9bc29b"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
