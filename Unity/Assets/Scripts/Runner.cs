@@ -22,22 +22,11 @@ namespace HaxeUnityBenchmark
             var count1 = 1000;
             var count2 = 10000;
             var count3 = 10000;
-            if (Application.isEditor)
-            {
-                Execute("Csharp", () => new CsharpExecutor(), count1, count2, count3);
-                Execute("JavaScript/Jint", () => new JavaScriptJintExecutor(jsSource), count1, count2, count3 / 100);
-                Execute("Lua/xLua", () => new LuaXLuaExecutor(luaSource), count1, count2, count3);
-                Execute("JavaScript/Core", () => new JavaScriptCoreExecutor(jsSource), count1, count2, count3);
-                Execute("JavaScript/Bridge", () => new BridgeJsCoreExecutor(jsSource), count1, count2, count3);
-            }
-            else
-            {
-                Execute("Csharp", () => new CsharpExecutor(), count1, count2, count3);
-                Execute("JavaScript/Jint", () => new JavaScriptJintExecutor(jsSource), count1, count2, count3);
-                Execute("Lua/xLua", () => new LuaXLuaExecutor(luaSource), count1, count2, count3);
-                Execute("JavaScript/Core", () => new JavaScriptCoreExecutor(jsSource), count1, count2, count3);
-                Execute("JavaScript/Bridge", () => new BridgeJsCoreExecutor(jsSource), count1, count2, count3);
-            }
+            Execute("Csharp", () => new CsharpExecutor(), count1, count2, count3);
+            Execute("JavaScript/Jint", () => new JavaScriptJintExecutor(jsSource), count1, count2, count3 / 50);
+            Execute("Lua/xLua", () => new LuaXLuaExecutor(luaSource), count1, count2, count3);
+            Execute("JavaScript/Bridge", () => new BridgeJsCoreExecutor(jsSource), count1, count2, count3);
+            // Execute("JavaScript/NativePlugin", () => new JavaScriptCoreExecutor(jsSource), count1, count2, count3);
 
             Log($"Finish {DateTime.Now}");
         }

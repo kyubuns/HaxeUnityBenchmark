@@ -6,7 +6,6 @@ namespace HaxeUnityBenchmark
     public class BridgeJsCoreExecutor : IExecutor
     {
         private Engine engine;
-        private JsObject mainClass;
 
         public BridgeJsCoreExecutor(string jsSource)
         {
